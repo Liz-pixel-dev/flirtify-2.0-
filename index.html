@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flirtify 2.0 - Modern Pickup Lines</title>
+    <style>
+        :root {
+            --primary: #ff3b5c;
+            --secondary: #ff7b8d;
+        }
+
+        body {
+            font-family: 'Arial Rounded MT Bold', system-ui;
+            background: #fff5f7;
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .heart {
+            color: var(--primary);
+            animation: pulse 1.5s infinite;
+        }
+
+        .input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .generate-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            width: 100%;
+        }
+
+        .generate-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .lines-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .line-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .line-card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--primary);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Decorative shapes */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: var(--secondary);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            bottom: -150px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.05;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flirtify 2.0<span class="heart">❤️</span></h1>
+            <p>AI-powered pickup lines for modern romance</p>
+        </header>
+
+        <div class="input-section">
+            <button class="generate-btn" onclick="generateLines()">Generate Pickup Lines</button>
+        </div>
+
+        <div class="lines-grid" id="linesContainer">
+            <!-- Pickup lines will be inserted here -->
+        </div>
+
+        <footer>
+            Built with ❤️‍🔥 by xxoo
+        </footer>
+    </div>
+
+    <script>
+        const pickupLines = [
+            "Are you made of copper and tellurium? Because you're Cu-Te",
+            "Can I follow you home? My parents told me to follow my dreams",
+            "Do you have a map? I keep getting lost in your eyes",
+            "Are you a magician? Everyone else disappears when I look at you",
+            "Is your name Google? Because you have everything I'm searching for",
+            "Are you French? Because Eiffel for you",
+            "Do you have a sunburn or are you always this hot?",
+            "Are you a parking ticket? Because you've got FINE written all over you",
+            "Is your dad a baker? Because you're a cutie pie",
+            "Are you a time traveler? Because I see you in my future",
+            "Do you believe in love at first sight or should I walk by again?",
+            "Are you a camera? Every time I look at you, I smile",
+            "Is your name Wi-Fi? Because I'm really feeling a connection",
+            "Are you a bank loan? Because you have my interest",
+            "Do you have a Band-Aid? I just scraped my knee falling for you",
+            "Are you a campfire? Because you're hot and I want s'more",
+            "Is your dad a boxer? Because you're a knockout!",
+            "Are you a star? Because you're lighting up my night",
+            "Do you like raisins? How do you feel about a date?",
+            "Are you an alien? Because you just abducted my heart"
+        ];
+
+        function generateLines() {
+            const container = document.getElementById('linesContainer');
+            container.innerHTML = '';
+            
+            // Shuffle array and pick 8 random lines
+            const shuffled = pickupLines.sort(() => 0.5 - Math.random());
+            const selected = shuffled.slice(0, 8);
+
+            selected.forEach(line => {
+                const card = document.createElement('div');
+                card.className = 'line-card';
+                card.innerHTML = `<p>${line}</p>`;
+                container.appendChild(card);
+            });
+        }
+
+        // Generate initial lines
+        generateLines();
+    </script>
+</body>
+</html>
